@@ -1,50 +1,65 @@
-import graphviz
-from google.colab import files
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="700" height="750" viewBox="0 0 700 750" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2c3e50"/>
+    </marker>
+  </defs>
 
-# Membuat canvas diagram dari atas ke bawah
-dot = graphviz.Digraph(comment='Flowchart Tahun Kabisat')
-dot.attr(rankdir='TB', size='10,10')
-dot.attr('node', fontname='Helvetica', shape='box', style='filled')
+  <text x="350" y="30" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a252f">Soal 2 – Tahun Kabisat (Model The Top)</text>
+  <text x="350" y="48" text-anchor="middle" font-size="11" fill="#555">Uji: 2000, 1900, 2024, 2023</text>
 
-# Deklarasi bentuk dan warna (mirip standar Flowgorithm)
-dot.node('Start', 'Mulai', shape='ellipse', fillcolor='#d5e8d4', color='#82b366')
-dot.node('Input', 'Input Tahun', shape='parallelogram', fillcolor='#dae8fc', color='#6c8ebf')
+  <ellipse cx="350" cy="85" rx="60" ry="24" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+  <text x="350" y="90" text-anchor="middle" font-size="13" fill="#1a252f">Mulai</text>
+  <line x1="350" y1="109" x2="350" y2="135" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-dot.node('Cek400', 'Tahun % 400 == 0?', shape='diamond', fillcolor='#ffe6cc', color='#d79b00')
-dot.node('Kabisat1', 'Output\n"Tahun Kabisat"', shape='parallelogram', fillcolor='#d5e8d4', color='#82b366')
+  <polygon points="260,135 450,135 440,175 250,175" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+  <text x="350" y="159" text-anchor="middle" font-size="12" fill="#1a252f">Input Tahun</text>
+  <line x1="350" y1="175" x2="350" y2="205" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-dot.node('Cek100', 'Tahun % 100 == 0?', shape='diamond', fillcolor='#ffe6cc', color='#d79b00')
-dot.node('Bukan1', 'Output\n"Bukan Kabisat"', shape='parallelogram', fillcolor='#f8cecc', color='#b85450')
+  <polygon points="350,205 450,245 350,285 250,245" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
+  <text x="350" y="240" text-anchor="middle" font-size="12" fill="#1a252f">Tahun % 400 = 0?</text>
+  <text x="350" y="255" text-anchor="middle" font-size="10" fill="#666">(habis dibagi 400)</text>
 
-dot.node('Cek4', 'Tahun % 4 == 0?', shape='diamond', fillcolor='#ffe6cc', color='#d79b00')
-dot.node('Kabisat2', 'Output\n"Tahun Kabisat"', shape='parallelogram', fillcolor='#d5e8d4', color='#82b366')
-dot.node('Bukan2', 'Output\n"Bukan Kabisat"', shape='parallelogram', fillcolor='#f8cecc', color='#b85450')
+  <line x1="450" y1="245" x2="515" y2="245" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="485" y="238" text-anchor="middle" font-size="11" fill="#27ae60" font-weight="bold">Ya</text>
+  <polygon points="530,225 630,225 620,265 520,265" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+  <text x="575" y="249" text-anchor="middle" font-size="11" fill="#1a252f" font-weight="bold">KABISAT</text>
+  <line x1="575" y1="265" x2="575" y2="600" stroke="#2c3e50" stroke-width="1.5"/>
 
-dot.node('End', 'Selesai', shape='ellipse', fillcolor='#d5e8d4', color='#82b366')
+  <line x1="350" y1="285" x2="350" y2="325" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="375" y="310" text-anchor="middle" font-size="11" fill="#e74c3c" font-weight="bold">Tidak</text>
 
-# Menyambungkan garis antar komponen
-dot.edge('Start', 'Input')
-dot.edge('Input', 'Cek400')
+  <polygon points="350,325 450,365 350,405 250,365" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
+  <text x="350" y="360" text-anchor="middle" font-size="12" fill="#1a252f">Tahun % 100 = 0?</text>
+  <text x="350" y="375" text-anchor="middle" font-size="10" fill="#666">(habis dibagi 100)</text>
 
-# Diamond 1
-dot.edge('Cek400', 'Kabisat1', label=' True')
-dot.edge('Cek400', 'Cek100', label=' False')
+  <line x1="450" y1="365" x2="515" y2="365" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="485" y="358" text-anchor="middle" font-size="11" fill="#27ae60" font-weight="bold">Ya</text>
+  <polygon points="530,345 630,345 620,385 520,385" fill="#f8cecc" stroke="#b85450" stroke-width="1.5"/>
+  <text x="575" y="369" text-anchor="middle" font-size="11" fill="#1a252f" font-weight="bold">BUKAN</text>
 
-# Diamond 2
-dot.edge('Cek100', 'Bukan1', label=' True')
-dot.edge('Cek100', 'Cek4', label=' False')
+  <line x1="350" y1="405" x2="350" y2="445" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="375" y="430" text-anchor="middle" font-size="11" fill="#e74c3c" font-weight="bold">Tidak</text>
 
-# Diamond 3
-dot.edge('Cek4', 'Kabisat2', label=' True')
-dot.edge('Cek4', 'Bukan2', label=' False')
+  <polygon points="350,445 450,485 350,525 250,485" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
+  <text x="350" y="480" text-anchor="middle" font-size="12" fill="#1a252f">Tahun % 4 = 0?</text>
+  <text x="350" y="495" text-anchor="middle" font-size="10" fill="#666">(habis dibagi 4)</text>
 
-# Menyambungkan ke End
-dot.edge('Kabisat1', 'End')
-dot.edge('Bukan1', 'End')
-dot.edge('Kabisat2', 'End')
-dot.edge('Bukan2', 'End')
+  <line x1="450" y1="485" x2="515" y2="485" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="485" y="478" text-anchor="middle" font-size="11" fill="#27ae60" font-weight="bold">Ya</text>
+  <polygon points="530,465 630,465 620,505 520,505" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+  <text x="575" y="489" text-anchor="middle" font-size="11" fill="#1a252f" font-weight="bold">KABISAT</text>
 
-# Render dan Download gambar
-dot.render('flowchart_kabisat_the_top', format='png', cleanup=True)
-files.download('flowchart_kabisat_the_top.png')
-print("✅ Diagram The Top berhasil di-download!")
+  <line x1="250" y1="485" x2="185" y2="485" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="215" y="478" text-anchor="middle" font-size="11" fill="#e74c3c" font-weight="bold">Tidak</text>
+  <polygon points="80,465 180,465 170,505 70,505" fill="#f8cecc" stroke="#b85450" stroke-width="1.5"/>
+  <text x="125" y="489" text-anchor="middle" font-size="11" fill="#1a252f" font-weight="bold">BUKAN</text>
+
+  <line x1="125" y1="505" x2="125" y2="600" stroke="#2c3e50" stroke-width="1.5"/>
+  <line x1="125" y1="600" x2="575" y2="600" stroke="#2c3e50" stroke-width="1.5"/>
+  <line x1="350" y1="600" x2="350" y2="626" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <ellipse cx="350" cy="650" rx="60" ry="24" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+  <text x="350" y="655" text-anchor="middle" font-size="13" fill="#1a252f">Selesai</text>
+</svg>
