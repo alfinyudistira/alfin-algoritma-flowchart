@@ -441,22 +441,9 @@
 
   <div class="pseudo-block">
     <div class="pseudo-header">Algoritma Konversi Suhu</div>
-    <div class="pseudo-body">
-<span class="kw">ALGORITMA</span> KonversiSuhu
-<span class="kw">DEKLARASI</span>
-  Celsius, Fahrenheit, Kelvin : <span class="kw">Real</span>
-
-<span class="kw">DESKRIPSI</span>
-  <span class="fn">Output</span>(<span class="str">"Masukkan suhu dalam Celsius: "</span>)
-  <span class="fn">Input</span>(Celsius)
-
-  Fahrenheit ← (<span class="num">9</span>/<span class="num">5</span> × Celsius) + <span class="num">32</span>
-  Kelvin     ← Celsius + <span class="num">273.15</span>
-
-  <span class="fn">Output</span>(<span class="str">"Fahrenheit = "</span>, Fahrenheit)
-  <span class="fn">Output</span>(<span class="str">"Kelvin     = "</span>, Kelvin)
-<span class="kw">SELESAI</span>
-    </div>
+<div style="text-align: center; margin: 0; padding: 0;">
+    <img src="Pseudocode1.jpg" alt="Pseudocode Soal 1" style="max-width: 100%; border-radius: 8px; display: block; width: 100%;">
+</div>
   </div>
 
   <div class="info-box">
@@ -493,25 +480,8 @@
 
   <div class="pseudo-block">
     <div class="pseudo-header">Algoritma Pengecekan Tahun Kabisat</div>
-    <div class="pseudo-body">
-<span class="kw">ALGORITMA</span> CekTahunKabisat
-<span class="kw">DEKLARASI</span>
-  Tahun : <span class="kw">Integer</span>
-
-<span class="kw">DESKRIPSI</span>
-  <span class="fn">Output</span>(<span class="str">"Masukkan angka Tahun: "</span>)
-  <span class="fn">Input</span>(Tahun)
-
-  <span class="kw">JIKA</span> (Tahun <span class="kw">mod</span> <span class="num">400</span> = <span class="num">0</span>) <span class="kw">MAKA</span>
-    <span class="fn">Output</span>(<span class="str">"Tahun Kabisat"</span>)
-  <span class="kw">SEBALIKNYA JIKA</span> (Tahun <span class="kw">mod</span> <span class="num">100</span> = <span class="num">0</span>) <span class="kw">MAKA</span>
-    <span class="fn">Output</span>(<span class="str">"Bukan Tahun Kabisat"</span>)
-  <span class="kw">SEBALIKNYA JIKA</span> (Tahun <span class="kw">mod</span> <span class="num">4</span> = <span class="num">0</span>) <span class="kw">MAKA</span>
-    <span class="fn">Output</span>(<span class="str">"Tahun Kabisat"</span>)
-  <span class="kw">SEBALIKNYA</span>
-    <span class="fn">Output</span>(<span class="str">"Bukan Tahun Kabisat"</span>)
-  <span class="kw">AKHIR JIKA</span>
-<span class="kw">SELESAI</span>
+<div style="text-align: center; margin: 0; padding: 0;">
+    <img src="Pseudocode2.jpg" alt="Pseudocode Soal 2" style="max-width: 100%; border-radius: 8px; display: block; width: 100%;">
     </div>
   </div>
 
@@ -549,26 +519,9 @@
 
   <div class="pseudo-block">
     <div class="pseudo-header">Algoritma Deret Fibonacci F(1)–F(10)</div>
-    <div class="pseudo-body">
-<span class="kw">ALGORITMA</span> DeretFibonacci
-<span class="kw">DEKLARASI</span>
-  a, b, c, i : <span class="kw">Integer</span>
-
-<span class="kw">DESKRIPSI</span>
-  a ← <span class="num">1</span>  <span class="cmt">{ nilai F(1) }</span>
-  b ← <span class="num">1</span>  <span class="cmt">{ nilai F(2) }</span>
-
-  <span class="fn">Output</span>(<span class="str">"F(1) = "</span>, a)
-  <span class="fn">Output</span>(<span class="str">"F(2) = "</span>, b)
-
-  <span class="kw">UNTUK</span> i ← <span class="num">3</span> <span class="kw">SAMPAI</span> <span class="num">10</span> <span class="kw">LAKUKAN</span>
-    c ← a + b
-    <span class="fn">Output</span>(<span class="str">"F("</span>, i, <span class="str">") = "</span>, c)
-    a ← b
-    b ← c
-  <span class="kw">AKHIR UNTUK</span>
-<span class="kw">SELESAI</span>
-    </div>
+<div style="text-align: center; margin: 0; padding: 0;">
+    <img src="Pseudocode3.jpg" alt="Pseudocode Soal 3" style="max-width: 100%; border-radius: 8px; display: block; width: 100%;">
+</div>
   </div>
 
   <div class="info-box">
@@ -611,40 +564,9 @@
 
   <div class="pseudo-block">
     <div class="pseudo-header">Algoritma Kalkulator BMI</div>
-    <div class="pseudo-body">
-<span class="kw">ALGORITMA</span> KalkulatorBMI
-<span class="kw">DEKLARASI</span>
-  Berat       : <span class="kw">Integer</span>
-  Tinggi, BMI : <span class="kw">Real</span>
-  TinggiM     : <span class="kw">Real</span>  <span class="cmt">{ Tinggi dalam meter }</span>
-
-<span class="kw">FUNGSI</span> <span class="fn">HitungBMI</span>(Berat, TinggiM) : <span class="kw">Real</span>
-  <span class="kw">KEMBALIKAN</span> Berat / (TinggiM × TinggiM)
-
-<span class="kw">PROSEDUR</span> <span class="fn">CekBMI</span>(BMI)
-  <span class="kw">JIKA</span> BMI &lt; <span class="num">18.5</span> <span class="kw">MAKA</span>
-    <span class="fn">Output</span>(<span class="str">"Kurus (Underweight)"</span>)
-  <span class="kw">SEBALIKNYA JIKA</span> BMI &lt; <span class="num">25.0</span> <span class="kw">MAKA</span>
-    <span class="fn">Output</span>(<span class="str">"Normal (Healthy Weight)"</span>)
-  <span class="kw">SEBALIKNYA JIKA</span> BMI &lt; <span class="num">30.0</span> <span class="kw">MAKA</span>
-    <span class="fn">Output</span>(<span class="str">"Gemuk (Overweight)"</span>)
-  <span class="kw">SEBALIKNYA</span>
-    <span class="fn">Output</span>(<span class="str">"Obesitas (Obese)"</span>)
-  <span class="kw">AKHIR JIKA</span>
-
-<span class="kw">DESKRIPSI UTAMA</span>
-  <span class="fn">Output</span>(<span class="str">"Masukkan Berat Badan (kg): "</span>)
-  <span class="fn">Input</span>(Berat)
-  <span class="fn">Output</span>(<span class="str">"Masukkan Tinggi Badan (cm): "</span>)
-  <span class="fn">Input</span>(Tinggi)
-
-  TinggiM ← Tinggi / <span class="num">100</span>
-  BMI     ← <span class="fn">HitungBMI</span>(Berat, TinggiM)
-
-  <span class="fn">Output</span>(<span class="str">"Nilai BMI Anda: "</span>, BMI)
-  <span class="fn">CekBMI</span>(BMI)
-<span class="kw">SELESAI</span>
-    </div>
+<div style="text-align: center; margin: 0; padding: 0;">
+    <img src="Pseudocode4.jpg" alt="Pseudocode Soal 4" style="max-width: 100%; border-radius: 8px; display: block; width: 100%;">
+</div>
   </div>
 
   <div class="tag">Flowchart</div>
