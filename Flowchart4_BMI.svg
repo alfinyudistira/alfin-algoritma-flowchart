@@ -52,7 +52,7 @@
   <text x="475" y="674" text-anchor="middle" font-size="11" fill="#1a252f" font-weight="bold">KURUS</text>
 
   <line x1="250" y1="700" x2="250" y2="730" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <text x="230" y="718" text-anchor="middle" font-size="11" fill="#e74c3c" font-weight="bold">Tidak</text>
+  <text x="220" y="718" text-anchor="middle" font-size="11" fill="#e74c3c" font-weight="bold">Tidak</text>
 
   <polygon points="250,730 360,760 250,790 140,760" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
   <text x="250" y="764" text-anchor="middle" font-size="12" fill="#1a252f">BMI &lt; 25?</text>
@@ -63,7 +63,7 @@
   <text x="475" y="764" text-anchor="middle" font-size="11" fill="#1a252f" font-weight="bold">NORMAL</text>
 
   <line x1="250" y1="790" x2="250" y2="820" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <text x="230" y="808" text-anchor="middle" font-size="11" fill="#e74c3c" font-weight="bold">Tidak</text>
+  <text x="220" y="808" text-anchor="middle" font-size="11" fill="#e74c3c" font-weight="bold">Tidak</text>
 
   <polygon points="250,820 360,850 250,880 140,850" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
   <text x="250" y="854" text-anchor="middle" font-size="12" fill="#1a252f">BMI &lt; 30?</text>
@@ -74,7 +74,7 @@
   <text x="475" y="854" text-anchor="middle" font-size="11" fill="#1a252f" font-weight="bold">GEMUK</text>
 
   <line x1="250" y1="880" x2="250" y2="910" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <text x="230" y="898" text-anchor="middle" font-size="11" fill="#e74c3c" font-weight="bold">Tidak</text>
+  <text x="220" y="898" text-anchor="middle" font-size="11" fill="#e74c3c" font-weight="bold">Tidak</text>
 
   <polygon points="170,910 330,910 320,940 180,940" fill="#f8cecc" stroke="#b85450" stroke-width="1.5"/>
   <text x="250" y="929" text-anchor="middle" font-size="12" fill="#1a252f" font-weight="bold">OBESITAS (≥30)</text>
