@@ -1,99 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="500" height="880" viewBox="0 0 500 880" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+<svg width="650" height="900" viewBox="0 0 650 900" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
   <defs>
     <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
       <polygon points="0 0, 10 3.5, 0 7" fill="#2c3e50"/>
     </marker>
   </defs>
 
-  <text x="250" y="28" text-anchor="middle" font-size="15" font-weight="bold" fill="#1a252f">Soal 3 – Deret Fibonacci</text>
-  <text x="250" y="46" text-anchor="middle" font-size="11" fill="#555">F(1) hingga F(10) dengan tabel iterasi</text>
+  <text x="325" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a252f">Soal 3 – Deret Fibonacci</text>
+  <text x="325" y="50" text-anchor="middle" font-size="12" fill="#555">F(1) hingga F(10) dengan tabel iterasi</text>
 
-  <!-- START -->
-  <ellipse cx="250" cy="80" rx="60" ry="22" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
-  <text x="250" y="85" text-anchor="middle" font-size="13" fill="#1a252f">Mulai</text>
-  <line x1="250" y1="102" x2="250" y2="130" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <ellipse cx="250" cy="95" rx="60" ry="24" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+  <text x="250" y="100" text-anchor="middle" font-size="13" fill="#1a252f">Mulai</text>
+  <line x1="250" y1="119" x2="250" y2="145" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-  <!-- Deklarasi -->
-  <rect x="130" y="132" width="240" height="44" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
-  <text x="250" y="150" text-anchor="middle" font-size="12" fill="#1a252f">Integer a, b, c, i</text>
-  <text x="250" y="168" text-anchor="middle" font-size="11" fill="#666" font-style="italic">Deklarasi variabel</text>
-  <line x1="250" y1="176" x2="250" y2="204" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="150" y="145" width="200" height="40" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+  <text x="250" y="165" text-anchor="middle" font-size="12" fill="#1a252f">Integer a, b, c, i</text>
+  <text x="250" y="180" text-anchor="middle" font-size="10" fill="#666" font-style="italic">Deklarasi variabel</text>
+  <line x1="250" y1="185" x2="250" y2="215" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-  <!-- Init a=1, b=1 -->
-  <rect x="130" y="206" width="240" height="44" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
-  <text x="250" y="224" text-anchor="middle" font-size="12" fill="#1a252f">a = 1 &amp; b = 1 &amp; i = 1</text>
-  <text x="250" y="242" text-anchor="middle" font-size="11" fill="#666" font-style="italic">Inisialisasi nilai awal</text>
-  <line x1="250" y1="250" x2="250" y2="278" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="150" y="215" width="200" height="40" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+  <text x="250" y="235" text-anchor="middle" font-size="12" fill="#1a252f">a = 1, b = 1</text>
+  <text x="250" y="250" text-anchor="middle" font-size="10" fill="#666" font-style="italic">Inisialisasi nilai awal</text>
+  <line x1="250" y1="255" x2="250" y2="285" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-  <!-- Output F1 dan F2 dulu -->
-  <polygon points="130,280 370,280 360,306 140,306" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
-  <text x="250" y="295" text-anchor="middle" font-size="12" fill="#1a252f">Output: F(1)=1, F(2)=1</text>
-  <text x="250" y="307" text-anchor="middle" font-size="10" fill="#555" font-style="italic">Dua nilai pertama langsung</text>
-  <line x1="250" y1="307" x2="250" y2="335" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <polygon points="140,285 360,285 350,325 130,325" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+  <text x="245" y="304" text-anchor="middle" font-size="12" fill="#1a252f">Output: F(1)=1, F(2)=1</text>
+  <text x="245" y="318" text-anchor="middle" font-size="10" fill="#666" font-style="italic">Dua nilai pertama langsung</text>
+  <line x1="250" y1="325" x2="250" y2="355" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-  <!-- i = 3 -->
-  <rect x="160" y="337" width="180" height="32" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
-  <text x="250" y="357" text-anchor="middle" font-size="12" fill="#1a252f">i = 3</text>
-  <line x1="250" y1="369" x2="250" y2="397" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="175" y="355" width="150" height="36" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+  <text x="250" y="377" text-anchor="middle" font-size="12" fill="#1a252f">i = 3</text>
+  <line x1="250" y1="391" x2="250" y2="425" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-  <!-- Loop Diamond -->
-  <polygon points="250,399 370,434 250,469 130,434" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
-  <text x="250" y="429" text-anchor="middle" font-size="12" fill="#1a252f">i ≤ 10 ?</text>
-  <text x="250" y="445" text-anchor="middle" font-size="10" fill="#666">(perulangan)</text>
+  <polygon points="250,425 340,465 250,505 160,465" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
+  <text x="250" y="465" text-anchor="middle" font-size="12" fill="#1a252f">i ≤ 10 ?</text>
+  <text x="250" y="480" text-anchor="middle" font-size="10" fill="#666">(perulangan)</text>
 
-  <!-- True: body loop -->
-  <line x1="370" y1="434" x2="420" y2="434" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <text x="393" y="427" text-anchor="middle" font-size="11" fill="#27ae60" font-weight="bold">Ya</text>
+  <line x1="340" y1="465" x2="430" y2="465" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="385" y="458" text-anchor="middle" font-size="11" fill="#27ae60" font-weight="bold">Ya</text>
 
-  <!-- Hitung c -->
-  <rect x="420" y="418" width="60" height="32" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
-  <text x="450" y="434" text-anchor="middle" font-size="11" fill="#1a252f">c=a+b</text>
-  <line x1="450" y1="450" x2="450" y2="480" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="430" y="445" width="80" height="40" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+  <text x="470" y="470" text-anchor="middle" font-size="12" fill="#1a252f">c = a + b</text>
+  <line x1="470" y1="485" x2="470" y2="515" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-  <!-- Output c -->
-  <polygon points="420,482 485,482 478,502 427,502" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
-  <text x="452" y="496" text-anchor="middle" font-size="11" fill="#1a252f">Output F(i)=c</text>
-  <line x1="452" y1="502" x2="452" y2="530" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <polygon points="415,515 525,515 515,550 405,550" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+  <text x="465" y="537" text-anchor="middle" font-size="12" fill="#1a252f">Output F(i)=c</text>
+  <line x1="470" y1="550" x2="470" y2="580" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-  <!-- Update a=b, b=c -->
-  <rect x="420" y="532" width="65" height="44" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
-  <text x="452" y="549" text-anchor="middle" font-size="11" fill="#1a252f">a = b</text>
-  <text x="452" y="566" text-anchor="middle" font-size="11" fill="#1a252f">b = c</text>
-  <line x1="452" y1="576" x2="452" y2="606" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="430" y="580" width="80" height="46" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+  <text x="470" y="600" text-anchor="middle" font-size="12" fill="#1a252f">a = b</text>
+  <text x="470" y="618" text-anchor="middle" font-size="12" fill="#1a252f">b = c</text>
+  <line x1="470" y1="626" x2="470" y2="655" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-  <!-- i++ -->
-  <rect x="422" y="608" width="60" height="30" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
-  <text x="452" y="627" text-anchor="middle" font-size="11" fill="#1a252f">i = i + 1</text>
+  <rect x="430" y="655" width="80" height="36" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+  <text x="470" y="677" text-anchor="middle" font-size="12" fill="#1a252f">i = i + 1</text>
 
-  <!-- Loop back -->
-  <line x1="452" y1="638" x2="452" y2="660" stroke="#2c3e50" stroke-width="1.5"/>
-  <line x1="452" y1="660" x2="250" y2="660" stroke="#2c3e50" stroke-width="1.5"/>
-  <line x1="250" y1="660" x2="250" y2="469" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <text x="350" y="675" text-anchor="middle" font-size="10" fill="#888" font-style="italic">← kembali ke kondisi</text>
+  <line x1="470" y1="691" x2="470" y2="715" stroke="#2c3e50" stroke-width="1.5"/>
+  <line x1="470" y1="715" x2="560" y2="715" stroke="#2c3e50" stroke-width="1.5"/>
+  <line x1="560" y1="715" x2="560" y2="405" stroke="#2c3e50" stroke-width="1.5"/>
+  <line x1="560" y1="405" x2="250" y2="405" stroke="#2c3e50" stroke-width="1.5"/>
+  <line x1="250" y1="405" x2="250" y2="425" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="565" y="560" font-size="11" fill="#888" font-style="italic" transform="rotate(-90 565,560)">← kembali ke kondisi</text>
 
-  <!-- False: End -->
-  <line x1="250" y1="469" x2="250" y2="700" stroke="#2c3e50" stroke-width="1.5"/>
-  <text x="235" y="490" font-size="11" fill="#e74c3c" font-weight="bold">Tidak</text>
-  <line x1="250" y1="700" x2="250" y2="718" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="250" y1="505" x2="250" y2="740" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="230" y="525" text-anchor="middle" font-size="11" fill="#e74c3c" font-weight="bold">Tidak</text>
 
-  <ellipse cx="250" cy="740" rx="60" ry="22" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
-  <text x="250" y="745" text-anchor="middle" font-size="13" fill="#1a252f">Selesai</text>
+  <ellipse cx="250" cy="764" rx="60" ry="24" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+  <text x="250" y="769" text-anchor="middle" font-size="13" fill="#1a252f">Selesai</text>
 
-  <!-- Tabel Iterasi -->
-  <rect x="20" y="775" width="460" height="95" rx="6" fill="#f5f8ff" stroke="#6c8ebf" stroke-width="1.2"/>
-  <text x="250" y="794" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a252f">Tabel Iterasi Fibonacci</text>
-  <line x1="20" y1="800" x2="480" y2="800" stroke="#6c8ebf" stroke-width="0.8"/>
-  <text x="55" y="815" text-anchor="middle" font-size="10" fill="#333" font-weight="bold">i</text>
-  <text x="115" y="815" text-anchor="middle" font-size="10" fill="#333" font-weight="bold">a</text>
-  <text x="175" y="815" text-anchor="middle" font-size="10" fill="#333" font-weight="bold">b</text>
-  <text x="235" y="815" text-anchor="middle" font-size="10" fill="#333" font-weight="bold">c = a+b</text>
-  <text x="340" y="815" text-anchor="middle" font-size="10" fill="#333" font-weight="bold">Output F(i)</text>
-  <line x1="20" y1="820" x2="480" y2="820" stroke="#ccc" stroke-width="0.6"/>
-  <text x="55" y="835" text-anchor="middle" font-size="10" fill="#555">3–10</text>
-  <text x="115" y="835" text-anchor="middle" font-size="10" fill="#555">1,1,2,3,5,8,13,21</text>
-  <text x="175" y="835" text-anchor="middle" font-size="10" fill="#555">1,2,3,5,8,13,21,34</text>
-  <text x="250" y="835" text-anchor="middle" font-size="10" fill="#555">2,3,5,8,13,21,34,55</text>
-  <text x="390" y="835" text-anchor="middle" font-size="10" fill="#27ae60" font-weight="bold">2,3,5,8,13,21,34,55</text>
-  <text x="250" y="858" text-anchor="middle" font-size="10" fill="#888" font-style="italic">F(1)=1, F(2)=1 dioutput langsung sebelum loop</text>
+  <rect x="25" y="810" width="600" height="80" rx="6" fill="#fcfcfc" stroke="#6c8ebf" stroke-width="1.2"/>
+  <text x="325" y="828" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a252f">Tabel Iterasi Fibonacci</text>
+  <line x1="25" y1="835" x2="625" y2="835" stroke="#6c8ebf" stroke-width="0.8"/>
+
+  <text x="60" y="852" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">i</text>
+  <text x="150" y="852" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">a</text>
+  <text x="270" y="852" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">b</text>
+  <text x="400" y="852" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">c = a+b</text>
+  <text x="530" y="852" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">Output F(i)</text>
+
+  <text x="60" y="875" text-anchor="middle" font-size="12" fill="#555">3–10</text>
+  <text x="150" y="875" text-anchor="middle" font-size="12" fill="#555">1, 1, 2, 3, 5, 8, 13, 21</text>
+  <text x="270" y="875" text-anchor="middle" font-size="12" fill="#555">1, 2, 3, 5, 8, 13, 21, 34</text>
+  <text x="400" y="875" text-anchor="middle" font-size="12" fill="#555">2, 3, 5, 8, 13, 21, 34, 55</text>
+  <text x="530" y="875" text-anchor="middle" font-size="12" font-weight="bold" fill="#27ae60">2, 3, 5, 8, 13, 21, 34, 55</text>
 </svg>
