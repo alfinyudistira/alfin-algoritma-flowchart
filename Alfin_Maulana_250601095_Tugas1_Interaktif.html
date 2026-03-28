@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tugas 1 – Algoritma dan Flowchart</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap');
+
+  :root {
+    --ink: #1a1a2e;
+    --soft: #f7f4ef;
+    --cream: #faf8f3;
+    --accent: #2d6a4f;
+    --accent2: #e76f51;
+    --border: #d4c8b0;
+    --gray: #6b6b7b;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* Cover page */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    background: var(--ink);
+    color: var(--cream);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 250px; height: 250px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .cover-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 20px;
+  }
+
+  .cover h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .cover-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    font-style: italic;
+    margin-bottom: 48px;
+  }
+
+  .info-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 28px 32px;
+    width: 100%;
+    max-width: 340px;
+    text-align: left;
+    margin-bottom: 32px;
+  }
+
+  .info-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 14px;
+  }
+  .info-row:last-child { margin-bottom: 0; }
+
+  .info-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 2px;
+  }
+
+  .info-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .deadline-badge {
+    background: rgba(231,111,81,0.2);
+    border: 1px solid rgba(231,111,81,0.4);
+    color: #e76f51;
+    font-size: 11px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+  }
+
+  /* Navigation */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--ink);
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .nav::-webkit-scrollbar { display: none; }
+
+  .nav-btn {
+    flex: 0 0 auto;
+    padding: 14px 20px;
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: 'Source Serif 4', serif;
+  }
+  .nav-btn:hover { color: #fff; }
+  .nav-btn.active {
+    color: #fff;
+    border-bottom: 2px solid var(--accent2);
+  }
+
+  /* Content sections */
+  .section {
+    display: none;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 20px 60px;
+  }
+  .section.active { display: block; }
+
+  .section-header {
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-number {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 6px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+
+  .section-desc {
+    font-size: 13px;
+    color: var(--gray);
+    font-style: italic;
+  }
+
+  /* Pseudocode block */
+  .pseudo-block {
+    background: #0f1923;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px 0;
+  }
+
+  .pseudo-header {
+    background: rgba(255,255,255,0.05);
+    padding: 10px 18px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .pseudo-body {
+    padding: 18px 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.9;
+    color: #e8e8e8;
+    overflow-x: auto;
+  }
+
+  .kw { color: #79b8ff; }       /* keyword */
+  .fn { color: #b392f0; }       /* function */
+  .str { color: #9ecbff; }      /* string */
+  .cmt { color: #6a737d; font-style: italic; } /* comment */
+  .num { color: #f8c555; }      /* number */
+  .op { color: #e8e8e8; }       /* operator */
+
+  /* Info box */
+  .info-box {
+    background: #f0f4ff;
+    border-left: 3px solid #4a90d9;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 13px;
+    color: #2c3e6b;
+  }
+
+  .info-box strong { display: block; margin-bottom: 4px; font-size: 12px; letter-spacing: 0.5px; }
+
+  /* Flowchart container */
+  .flowchart-wrap {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    margin: 20px 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .flowchart-wrap svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Python code */
+  .py-block {
+    background: #0d1117;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px 0;
+  }
+
+  .py-header {
+    background: rgba(255,255,255,0.05);
+    padding: 10px 18px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .py-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dots { display: flex; gap: 6px; }
+
+  .py-body {
+    padding: 18px 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.9;
+    color: #e6edf3;
+    overflow-x: auto;
+    white-space: pre;
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 13px;
+  }
+
+  th {
+    background: var(--ink);
+    color: white;
+    padding: 10px 14px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  td {
+    border: 1px solid var(--border);
+    padding: 9px 14px;
+    text-align: center;
+    color: var(--ink);
+  }
+
+  tr:nth-child(even) td { background: #f9f7f3; }
+
+  /* Explanation card */
+  .explain-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 16px 0;
+  }
+
+  .explain-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: var(--accent);
+  }
+
+  .explain-card p {
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 8px;
+  }
+
+  /* Divider */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 28px 0;
+  }
+
+  /* Tag */
+  .tag {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+
+  /* Print-safe */
+  @media print {
+    .nav { display: none; }
+    .section { display: block !important; page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover" id="cover">
+  <div class="cover-label">Universitas Muhammadiyah Gresik · Teknik Industri</div>
+  <h1>Tugas 1<br>Algoritma &amp;<br>Flowchart</h1>
+  <div class="cover-sub">Pemrograman Komputer — Semester Genap 2025/2026</div>
+
+  <div class="info-card">
+    <div class="info-row">
+      <span class="info-label">Nama</span>
+      <span class="info-value">Alfin Maulana Yudistira</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">NIM</span>
+      <span class="info-value">250601095</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Kelas</span>
+      <span class="info-value">B Sore — Teknik Industri</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Dosen</span>
+      <span class="info-value">Deny Andesta, M.T.</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Tanggal</span>
+      <span class="info-value">28 Maret 2026</span>
+    </div>
+  </div>
+
+  <div class="deadline-badge">Jatuh Tempo: Kamis, 2 April 2026 · 23.59</div>
+</div>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="main-nav">
+  <button class="nav-btn active" onclick="showSection('s1')">Soal 1 · Konversi Suhu</button>
+  <button class="nav-btn" onclick="showSection('s2')">Soal 2 · Tahun Kabisat</button>
+  <button class="nav-btn" onclick="showSection('s3')">Soal 3 · Fibonacci</button>
+  <button class="nav-btn" onclick="showSection('s4')">Soal 4 · BMI</button>
+</nav>
+
+<!-- ===== SOAL 1 ===== -->
+<section class="section active" id="s1">
+  <div class="section-header">
+    <div class="section-number">Soal 01</div>
+    <div class="section-title">Konversi Suhu</div>
+    <div class="section-desc">Celsius → Fahrenheit (F = 9/5 × C + 32) dan Kelvin (K = C + 273.15)</div>
+  </div>
+
+  <div class="tag">Pseudocode</div>
+
+  <div class="pseudo-block">
+    <div class="pseudo-header">Algoritma Konversi Suhu</div>
+    <div class="pseudo-body">
+<span class="kw">ALGORITMA</span> KonversiSuhu
+<span class="kw">DEKLARASI</span>
+  Celsius, Fahrenheit, Kelvin : <span class="kw">Real</span>
+
+<span class="kw">DESKRIPSI</span>
+  <span class="fn">Output</span>(<span class="str">"Masukkan suhu dalam Celsius: "</span>)
+  <span class="fn">Input</span>(Celsius)
+
+  Fahrenheit ← (<span class="num">9</span>/<span class="num">5</span> × Celsius) + <span class="num">32</span>
+  Kelvin     ← Celsius + <span class="num">273.15</span>
+
+  <span class="fn">Output</span>(<span class="str">"Fahrenheit = "</span>, Fahrenheit)
+  <span class="fn">Output</span>(<span class="str">"Kelvin     = "</span>, Kelvin)
+<span class="kw">SELESAI</span>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>Cara Kerja</strong>
+    Program menerima satu nilai suhu Celsius, kemudian langsung menghitung kedua hasil konversi sekaligus menggunakan dua rumus yang berbeda, lalu menampilkan keduanya dalam satu kali jalan program.
+  </div>
+
+  <div class="tag">Flowchart</div>
+
+  <div class="flowchart-wrap">
+    <svg width="500" height="820" viewBox="0 0 500 820" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+      <defs><marker id="a1" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2c3e50"/></marker></defs>
+      <text x="250" y="30" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a252f">Flowchart – Konversi Suhu</text>
+      <text x="250" y="48" text-anchor="middle" font-size="11" fill="#666" font-style="italic">Input Celsius → Output Fahrenheit dan Kelvin</text>
+      <!-- START -->
+      <ellipse cx="250" cy="90" rx="60" ry="24" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+      <text x="250" y="95" text-anchor="middle" font-size="13" fill="#1a252f">Mulai</text>
+      <line x1="250" y1="114" x2="250" y2="148" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a1)"/>
+      <!-- Deklarasi -->
+      <rect x="150" y="150" width="200" height="44" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+      <text x="250" y="168" text-anchor="middle" font-size="12" fill="#1a252f">Real Celsius</text>
+      <text x="250" y="185" text-anchor="middle" font-size="12" fill="#1a252f">Real Fahrenheit, Kelvin</text>
+      <line x1="250" y1="194" x2="250" y2="228" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a1)"/>
+      <!-- Output prompt -->
+      <polygon points="150,230 350,230 340,256 160,256" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+      <text x="250" y="248" text-anchor="middle" font-size="12" fill="#1a252f">"Masukkan suhu (°C):"</text>
+      <line x1="250" y1="256" x2="250" y2="286" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a1)"/>
+      <!-- Input -->
+      <polygon points="160,288 340,288 350,310 150,310" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+      <text x="250" y="304" text-anchor="middle" font-size="12" fill="#1a252f">Input Celsius</text>
+      <line x1="250" y1="310" x2="250" y2="340" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a1)"/>
+      <!-- Hitung F -->
+      <rect x="120" y="342" width="260" height="38" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+      <text x="250" y="362" text-anchor="middle" font-size="12" fill="#1a252f">Fahrenheit = (9/5 × Celsius) + 32</text>
+      <line x1="250" y1="380" x2="250" y2="410" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a1)"/>
+      <!-- Hitung K -->
+      <rect x="120" y="412" width="260" height="38" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+      <text x="250" y="432" text-anchor="middle" font-size="12" fill="#1a252f">Kelvin = Celsius + 273.15</text>
+      <line x1="250" y1="450" x2="250" y2="480" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a1)"/>
+      <!-- Output -->
+      <polygon points="120,482 380,482 370,510 130,510" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+      <text x="250" y="496" text-anchor="middle" font-size="12" fill="#1a252f">Output Fahrenheit</text>
+      <text x="250" y="509" text-anchor="middle" font-size="11" fill="#555">Output Kelvin</text>
+      <line x1="250" y1="510" x2="250" y2="540" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a1)"/>
+      <!-- END -->
+      <ellipse cx="250" cy="562" rx="60" ry="24" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+      <text x="250" y="567" text-anchor="middle" font-size="13" fill="#1a252f">Selesai</text>
+      <!-- LEGEND -->
+      <rect x="20" y="610" width="460" height="190" rx="6" fill="#fafafa" stroke="#ccc" stroke-width="1"/>
+      <text x="250" y="632" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">Keterangan Simbol Flowchart</text>
+      <ellipse cx="65" cy="660" rx="36" ry="16" fill="#d5e8d4" stroke="#82b366" stroke-width="1.2"/>
+      <text x="65" y="665" text-anchor="middle" font-size="11" fill="#1a252f">Oval</text>
+      <text x="115" y="665" font-size="11" fill="#333">= Mulai / Selesai (Terminal)</text>
+      <rect x="29" y="686" width="72" height="20" rx="3" fill="#fff2cc" stroke="#d6b656" stroke-width="1.2"/>
+      <text x="65" y="700" text-anchor="middle" font-size="11" fill="#1a252f">Persegi</text>
+      <text x="115" y="700" font-size="11" fill="#333">= Proses / Perhitungan</text>
+      <polygon points="29,720 95,720 88,738 36,738" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.2"/>
+      <text x="62" y="733" text-anchor="middle" font-size="11" fill="#1a252f">Jajar</text>
+      <text x="115" y="733" font-size="11" fill="#333">= Input data</text>
+      <polygon points="29,748 95,748 88,766 36,766" fill="#d5e8d4" stroke="#82b366" stroke-width="1.2"/>
+      <text x="62" y="761" text-anchor="middle" font-size="11" fill="#1a252f">Jajar</text>
+      <text x="115" y="761" font-size="11" fill="#333">= Output data</text>
+      <polygon points="65,778 105,798 65,818 25,798" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.2"/>
+      <text x="65" y="803" text-anchor="middle" font-size="11" fill="#1a252f">Belah</text>
+      <text x="115" y="803" font-size="11" fill="#333">= Kondisi / Percabangan</text>
+    </svg>
+  </div>
+
+  <div class="explain-card">
+    <h4>Contoh Uji Nilai</h4>
+    <table>
+      <tr><th>Input (°C)</th><th>Fahrenheit (°F)</th><th>Kelvin (K)</th></tr>
+      <tr><td>0</td><td>32.00</td><td>273.15</td></tr>
+      <tr><td>100</td><td>212.00</td><td>373.15</td></tr>
+      <tr><td>-40</td><td>-40.00</td><td>233.15</td></tr>
+      <tr><td>37</td><td>98.60</td><td>310.15</td></tr>
+    </table>
+    <p style="font-size:12px;color:#888;font-style:italic;">Catatan: -40°C adalah titik di mana Celsius dan Fahrenheit memiliki nilai yang sama.</p>
+  </div>
+</section>
+
+<!-- ===== SOAL 2 ===== -->
+<section class="section" id="s2">
+  <div class="section-header">
+    <div class="section-number">Soal 02</div>
+    <div class="section-title">Tahun Kabisat</div>
+    <div class="section-desc">Aturan: habis dibagi 400, atau habis dibagi 4 tapi tidak 100. Uji: 2000, 1900, 2024, 2023</div>
+  </div>
+
+  <div class="tag">Pseudocode</div>
+
+  <div class="pseudo-block">
+    <div class="pseudo-header">Algoritma Pengecekan Tahun Kabisat</div>
+    <div class="pseudo-body">
+<span class="kw">ALGORITMA</span> CekTahunKabisat
+<span class="kw">DEKLARASI</span>
+  Tahun : <span class="kw">Integer</span>
+
+<span class="kw">DESKRIPSI</span>
+  <span class="fn">Output</span>(<span class="str">"Masukkan angka Tahun: "</span>)
+  <span class="fn">Input</span>(Tahun)
+
+  <span class="kw">JIKA</span> (Tahun <span class="kw">mod</span> <span class="num">400</span> = <span class="num">0</span>) <span class="kw">MAKA</span>
+    <span class="fn">Output</span>(<span class="str">"Tahun Kabisat"</span>)
+  <span class="kw">SEBALIKNYA JIKA</span> (Tahun <span class="kw">mod</span> <span class="num">100</span> = <span class="num">0</span>) <span class="kw">MAKA</span>
+    <span class="fn">Output</span>(<span class="str">"Bukan Tahun Kabisat"</span>)
+  <span class="kw">SEBALIKNYA JIKA</span> (Tahun <span class="kw">mod</span> <span class="num">4</span> = <span class="num">0</span>) <span class="kw">MAKA</span>
+    <span class="fn">Output</span>(<span class="str">"Tahun Kabisat"</span>)
+  <span class="kw">SEBALIKNYA</span>
+    <span class="fn">Output</span>(<span class="str">"Bukan Tahun Kabisat"</span>)
+  <span class="kw">AKHIR JIKA</span>
+<span class="kw">SELESAI</span>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>Logika Pengambilan Keputusan</strong>
+    Pemeriksaan dilakukan dari kondisi paling spesifik ke paling umum: pertama cek habis 400 (selalu kabisat), lalu habis 100 (bukan kabisat meskipun habis 4), terakhir habis 4 (kabisat). Urutan ini penting agar logika benar.
+  </div>
+
+  <div class="tag">Flowchart</div>
+
+  <div class="flowchart-wrap">
+    <svg width="620" height="640" viewBox="0 0 620 640" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+      <defs><marker id="a2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2c3e50"/></marker></defs>
+      <text x="310" y="28" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a252f">Flowchart – Tahun Kabisat</text>
+      <!-- START -->
+      <ellipse cx="310" cy="72" rx="60" ry="22" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+      <text x="310" y="77" text-anchor="middle" font-size="13" fill="#1a252f">Mulai</text>
+      <line x1="310" y1="94" x2="310" y2="118" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a2)"/>
+      <rect x="215" y="120" width="190" height="32" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+      <text x="310" y="140" text-anchor="middle" font-size="12" fill="#1a252f">Integer Tahun</text>
+      <line x1="310" y1="152" x2="310" y2="174" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a2)"/>
+      <polygon points="185,176 435,176 425,196 195,196" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+      <text x="310" y="191" text-anchor="middle" font-size="12" fill="#1a252f">"Masukkan angka Tahun:"</text>
+      <line x1="310" y1="196" x2="310" y2="218" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a2)"/>
+      <polygon points="200,220 420,220 430,240 190,240" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+      <text x="310" y="235" text-anchor="middle" font-size="12" fill="#1a252f">Input Tahun</text>
+      <line x1="310" y1="240" x2="310" y2="263" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a2)"/>
+      <!-- Diamond 1: % 400 -->
+      <polygon points="310,265 420,300 310,335 200,300" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
+      <text x="310" y="295" text-anchor="middle" font-size="12" fill="#1a252f">Tahun % 400 = 0?</text>
+      <text x="310" y="310" text-anchor="middle" font-size="10" fill="#888" font-style="italic">(habis dibagi 400)</text>
+      <!-- Yes → KABISAT -->
+      <line x1="420" y1="300" x2="520" y2="300" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a2)"/>
+      <text x="468" y="293" text-anchor="middle" font-size="11" fill="#27ae60" font-weight="bold">Ya</text>
+      <polygon points="520,284 600,284 592,304 528,304" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+      <text x="560" y="298" text-anchor="middle" font-size="11" fill="#1a252f" font-weight="bold">KABISAT</text>
+      <line x1="560" y1="304" x2="560" y2="560" stroke="#2c3e50" stroke-width="1.5"/>
+      <line x1="560" y1="560" x2="380" y2="560" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a2)"/>
+      <!-- No → Diamond 2: % 100 -->
+      <line x1="310" y1="335" x2="310" y2="358" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a2)"/>
+      <text x="296" y="350" font-size="11" fill="#e74c3c" font-weight="bold">Tidak</text>
+      <polygon points="310,360 420,395 310,430 200,395" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
+      <text x="310" y="390" text-anchor="middle" font-size="12" fill="#1a252f">Tahun % 100 = 0?</text>
+      <text x="310" y="405" text-anchor="middle" font-size="10" fill="#888" font-style="italic">(habis dibagi 100)</text>
+      <!-- Yes → BUKAN -->
+      <line x1="420" y1="395" x2="520" y2="395" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a2)"/>
+      <text x="468" y="388" text-anchor="middle" font-size="11" fill="#27ae60" font-weight="bold">Ya</text>
+      <polygon points="520,379 600,379 592,399 528,399" fill="#f8cecc" stroke="#b85450" stroke-width="1.5"/>
+      <text x="560" y="393" text-anchor="middle" font-size="10" fill="#1a252f" font-weight="bold">BUKAN</text>
+      <line x1="560" y1="399" x2="560" y2="560" stroke="#2c3e50" stroke-width="0.8" stroke-dasharray="4,3"/>
+      <!-- No → Diamond 3: % 4 -->
+      <line x1="310" y1="430" x2="310" y2="453" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a2)"/>
+      <text x="296" y="445" font-size="11" fill="#e74c3c" font-weight="bold">Tidak</text>
+      <polygon points="310,455 410,485 310,515 210,485" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
+      <text x="310" y="480" text-anchor="middle" font-size="12" fill="#1a252f">Tahun % 4 = 0?</text>
+      <text x="310" y="495" text-anchor="middle" font-size="10" fill="#888" font-style="italic">(habis dibagi 4)</text>
+      <!-- No → BUKAN -->
+      <line x1="210" y1="485" x2="90" y2="485" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a2)"/>
+      <text x="152" y="477" text-anchor="middle" font-size="11" fill="#e74c3c" font-weight="bold">Tidak</text>
+      <polygon points="30,469 100,469 94,489 36,489" fill="#f8cecc" stroke="#b85450" stroke-width="1.5"/>
+      <text x="65" y="483" text-anchor="middle" font-size="10" fill="#1a252f" font-weight="bold">BUKAN</text>
+      <line x1="65" y1="489" x2="65" y2="540" stroke="#2c3e50" stroke-width="1.5"/>
+      <line x1="65" y1="540" x2="300" y2="540" stroke="#2c3e50" stroke-width="1.5"/>
+      <line x1="300" y1="540" x2="300" y2="558" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a2)"/>
+      <!-- Yes → KABISAT -->
+      <line x1="410" y1="485" x2="500" y2="485" stroke="#2c3e50" stroke-width="1.5"/>
+      <text x="453" y="477" text-anchor="middle" font-size="11" fill="#27ae60" font-weight="bold">Ya</text>
+      <line x1="500" y1="485" x2="500" y2="540" stroke="#2c3e50" stroke-width="1.5"/>
+      <line x1="500" y1="540" x2="368" y2="540" stroke="#2c3e50" stroke-width="1.5"/>
+      <line x1="368" y1="540" x2="368" y2="558" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a2)"/>
+      <!-- END -->
+      <ellipse cx="335" cy="578" rx="60" ry="22" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+      <text x="335" y="583" text-anchor="middle" font-size="13" fill="#1a252f">Selesai</text>
+    </svg>
+  </div>
+
+  <div class="explain-card">
+    <h4>Hasil Uji Empat Tahun</h4>
+    <table>
+      <tr><th>Tahun</th><th>% 400</th><th>% 100</th><th>% 4</th><th>Hasil</th></tr>
+      <tr><td>2000</td><td>0 ✓</td><td>—</td><td>—</td><td style="color:#27ae60;font-weight:bold;">Kabisat</td></tr>
+      <tr><td>1900</td><td>≠0</td><td>0 ✓</td><td>—</td><td style="color:#e74c3c;font-weight:bold;">Bukan</td></tr>
+      <tr><td>2024</td><td>≠0</td><td>≠0</td><td>0 ✓</td><td style="color:#27ae60;font-weight:bold;">Kabisat</td></tr>
+      <tr><td>2023</td><td>≠0</td><td>≠0</td><td>≠0</td><td style="color:#e74c3c;font-weight:bold;">Bukan</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ===== SOAL 3 ===== -->
+<section class="section" id="s3">
+  <div class="section-header">
+    <div class="section-number">Soal 03</div>
+    <div class="section-title">Deret Fibonacci</div>
+    <div class="section-desc">Menampilkan F(1) hingga F(10) menggunakan struktur perulangan dengan tabel iterasi</div>
+  </div>
+
+  <div class="tag">Pseudocode</div>
+
+  <div class="pseudo-block">
+    <div class="pseudo-header">Algoritma Deret Fibonacci F(1)–F(10)</div>
+    <div class="pseudo-body">
+<span class="kw">ALGORITMA</span> DeretFibonacci
+<span class="kw">DEKLARASI</span>
+  a, b, c, i : <span class="kw">Integer</span>
+
+<span class="kw">DESKRIPSI</span>
+  a ← <span class="num">1</span>  <span class="cmt">{ nilai F(1) }</span>
+  b ← <span class="num">1</span>  <span class="cmt">{ nilai F(2) }</span>
+
+  <span class="fn">Output</span>(<span class="str">"F(1) = "</span>, a)
+  <span class="fn">Output</span>(<span class="str">"F(2) = "</span>, b)
+
+  <span class="kw">UNTUK</span> i ← <span class="num">3</span> <span class="kw">SAMPAI</span> <span class="num">10</span> <span class="kw">LAKUKAN</span>
+    c ← a + b
+    <span class="fn">Output</span>(<span class="str">"F("</span>, i, <span class="str">") = "</span>, c)
+    a ← b
+    b ← c
+  <span class="kw">AKHIR UNTUK</span>
+<span class="kw">SELESAI</span>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>Cara Kerja Loop</strong>
+    Variabel <em>a</em> dan <em>b</em> menyimpan dua nilai Fibonacci sebelumnya. Di setiap iterasi, c = a + b dihitung, lalu a digeser ke b dan b digeser ke c. Ini adalah teknik <em>sliding window</em> yang efisien karena hanya butuh tiga variabel.
+  </div>
+
+  <div class="tag">Flowchart</div>
+
+  <div class="flowchart-wrap">
+    <svg width="500" height="720" viewBox="0 0 500 720" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+      <defs><marker id="a3" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2c3e50"/></marker></defs>
+      <text x="250" y="28" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a252f">Flowchart – Deret Fibonacci</text>
+      <!-- START -->
+      <ellipse cx="250" cy="68" rx="55" ry="22" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+      <text x="250" y="73" text-anchor="middle" font-size="13" fill="#1a252f">Mulai</text>
+      <line x1="250" y1="90" x2="250" y2="114" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a3)"/>
+      <!-- Deklarasi -->
+      <rect x="140" y="116" width="220" height="36" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+      <text x="250" y="138" text-anchor="middle" font-size="12" fill="#1a252f">Integer a, b, c, i</text>
+      <line x1="250" y1="152" x2="250" y2="176" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a3)"/>
+      <!-- Init -->
+      <rect x="140" y="178" width="220" height="36" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+      <text x="250" y="200" text-anchor="middle" font-size="12" fill="#1a252f">a ← 1 , b ← 1 , i ← 3</text>
+      <line x1="250" y1="214" x2="250" y2="238" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a3)"/>
+      <!-- Output F1, F2 -->
+      <polygon points="130,240 370,240 360,264 140,264" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+      <text x="250" y="255" text-anchor="middle" font-size="12" fill="#1a252f">Output F(1)=1, F(2)=1</text>
+      <line x1="250" y1="264" x2="250" y2="288" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a3)"/>
+      <!-- Loop Diamond -->
+      <polygon points="250,290 360,322 250,354 140,322" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
+      <text x="250" y="317" text-anchor="middle" font-size="12" fill="#1a252f">i ≤ 10 ?</text>
+      <text x="250" y="332" text-anchor="middle" font-size="10" fill="#888">(perulangan)</text>
+      <!-- Ya: body -->
+      <line x1="360" y1="322" x2="430" y2="322" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a3)"/>
+      <text x="393" y="314" text-anchor="middle" font-size="11" fill="#27ae60" font-weight="bold">Ya</text>
+      <rect x="430" y="306" width="60" height="32" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+      <text x="460" y="327" text-anchor="middle" font-size="11" fill="#1a252f">c = a+b</text>
+      <line x1="460" y1="338" x2="460" y2="364" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a3)"/>
+      <polygon points="428,366 492,366 485,384 435,384" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+      <text x="460" y="379" text-anchor="middle" font-size="11" fill="#1a252f">Output F(i)=c</text>
+      <line x1="460" y1="384" x2="460" y2="410" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a3)"/>
+      <rect x="430" y="412" width="60" height="40" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+      <text x="460" y="428" text-anchor="middle" font-size="11" fill="#1a252f">a ← b</text>
+      <text x="460" y="444" text-anchor="middle" font-size="11" fill="#1a252f">b ← c</text>
+      <line x1="460" y1="452" x2="460" y2="478" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a3)"/>
+      <rect x="430" y="480" width="60" height="28" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+      <text x="460" y="499" text-anchor="middle" font-size="11" fill="#1a252f">i = i + 1</text>
+      <!-- Loop back -->
+      <line x1="460" y1="508" x2="460" y2="534" stroke="#2c3e50" stroke-width="1.5"/>
+      <line x1="460" y1="534" x2="250" y2="534" stroke="#2c3e50" stroke-width="1.5"/>
+      <line x1="250" y1="534" x2="250" y2="354" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a3)"/>
+      <text x="355" y="548" text-anchor="middle" font-size="10" fill="#888" font-style="italic">← kembali cek kondisi</text>
+      <!-- Tidak: end -->
+      <text x="236" y="370" font-size="11" fill="#e74c3c" font-weight="bold">Tidak</text>
+      <line x1="250" y1="354" x2="250" y2="560" stroke="#2c3e50" stroke-width="0.8" stroke-dasharray="4,3"/>
+      <line x1="250" y1="560" x2="250" y2="580" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a3)"/>
+      <ellipse cx="250" cy="600" rx="55" ry="22" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+      <text x="250" y="605" text-anchor="middle" font-size="13" fill="#1a252f">Selesai</text>
+    </svg>
+  </div>
+
+  <div class="explain-card">
+    <h4>Tabel Iterasi Lengkap</h4>
+    <table>
+      <tr><th>F(n)</th><th>a (sebelum)</th><th>b (sebelum)</th><th>c = a+b</th><th>Nilai</th></tr>
+      <tr><td>F(1)</td><td colspan="3" style="font-style:italic;color:#888;">Langsung</td><td>1</td></tr>
+      <tr><td>F(2)</td><td colspan="3" style="font-style:italic;color:#888;">Langsung</td><td>1</td></tr>
+      <tr><td>F(3)</td><td>1</td><td>1</td><td>2</td><td>2</td></tr>
+      <tr><td>F(4)</td><td>1</td><td>2</td><td>3</td><td>3</td></tr>
+      <tr><td>F(5)</td><td>2</td><td>3</td><td>5</td><td>5</td></tr>
+      <tr><td>F(6)</td><td>3</td><td>5</td><td>8</td><td>8</td></tr>
+      <tr><td>F(7)</td><td>5</td><td>8</td><td>13</td><td>13</td></tr>
+      <tr><td>F(8)</td><td>8</td><td>13</td><td>21</td><td>21</td></tr>
+      <tr><td>F(9)</td><td>13</td><td>21</td><td>34</td><td>34</td></tr>
+      <tr><td>F(10)</td><td>21</td><td>34</td><td>55</td><td>55</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ===== SOAL 4 ===== -->
+<section class="section" id="s4">
+  <div class="section-header">
+    <div class="section-number">Soal 04</div>
+    <div class="section-title">Kalkulator BMI</div>
+    <div class="section-desc">BMI = Berat (kg) / Tinggi² (m) · Klasifikasi 4 kategori + Kode Python manual</div>
+  </div>
+
+  <div class="tag">Pseudocode</div>
+
+  <div class="pseudo-block">
+    <div class="pseudo-header">Algoritma Kalkulator BMI</div>
+    <div class="pseudo-body">
+<span class="kw">ALGORITMA</span> KalkulatorBMI
+<span class="kw">DEKLARASI</span>
+  Berat       : <span class="kw">Integer</span>
+  Tinggi, BMI : <span class="kw">Real</span>
+  TinggiM     : <span class="kw">Real</span>  <span class="cmt">{ Tinggi dalam meter }</span>
+
+<span class="kw">FUNGSI</span> <span class="fn">HitungBMI</span>(Berat, TinggiM) : <span class="kw">Real</span>
+  <span class="kw">KEMBALIKAN</span> Berat / (TinggiM × TinggiM)
+
+<span class="kw">PROSEDUR</span> <span class="fn">CekBMI</span>(BMI)
+  <span class="kw">JIKA</span> BMI &lt; <span class="num">18.5</span> <span class="kw">MAKA</span>
+    <span class="fn">Output</span>(<span class="str">"Kurus (Underweight)"</span>)
+  <span class="kw">SEBALIKNYA JIKA</span> BMI &lt; <span class="num">25.0</span> <span class="kw">MAKA</span>
+    <span class="fn">Output</span>(<span class="str">"Normal (Healthy Weight)"</span>)
+  <span class="kw">SEBALIKNYA JIKA</span> BMI &lt; <span class="num">30.0</span> <span class="kw">MAKA</span>
+    <span class="fn">Output</span>(<span class="str">"Gemuk (Overweight)"</span>)
+  <span class="kw">SEBALIKNYA</span>
+    <span class="fn">Output</span>(<span class="str">"Obesitas (Obese)"</span>)
+  <span class="kw">AKHIR JIKA</span>
+
+<span class="kw">DESKRIPSI UTAMA</span>
+  <span class="fn">Output</span>(<span class="str">"Masukkan Berat Badan (kg): "</span>)
+  <span class="fn">Input</span>(Berat)
+  <span class="fn">Output</span>(<span class="str">"Masukkan Tinggi Badan (cm): "</span>)
+  <span class="fn">Input</span>(Tinggi)
+
+  TinggiM ← Tinggi / <span class="num">100</span>
+  BMI     ← <span class="fn">HitungBMI</span>(Berat, TinggiM)
+
+  <span class="fn">Output</span>(<span class="str">"Nilai BMI Anda: "</span>, BMI)
+  <span class="fn">CekBMI</span>(BMI)
+<span class="kw">SELESAI</span>
+    </div>
+  </div>
+
+  <div class="tag">Flowchart</div>
+
+  <div class="flowchart-wrap">
+    <svg width="580" height="860" viewBox="0 0 580 860" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+      <defs><marker id="a4" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2c3e50"/></marker></defs>
+      <text x="290" y="28" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a252f">Flowchart – Kalkulator BMI</text>
+      <ellipse cx="290" cy="68" rx="60" ry="22" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+      <text x="290" y="73" text-anchor="middle" font-size="13" fill="#1a252f">Mulai</text>
+      <line x1="290" y1="90" x2="290" y2="114" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a4)"/>
+      <rect x="170" y="116" width="240" height="40" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+      <text x="290" y="132" text-anchor="middle" font-size="12" fill="#1a252f">Integer Berat</text>
+      <text x="290" y="148" text-anchor="middle" font-size="12" fill="#1a252f">Real Tinggi, TinggiM, BMI</text>
+      <line x1="290" y1="156" x2="290" y2="180" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a4)"/>
+      <polygon points="160,182 420,182 410,202 170,202" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+      <text x="290" y="197" text-anchor="middle" font-size="12" fill="#1a252f">"Masukkan Berat Badan (kg):"</text>
+      <line x1="290" y1="202" x2="290" y2="224" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a4)"/>
+      <polygon points="175,226 405,226 415,246 165,246" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+      <text x="290" y="241" text-anchor="middle" font-size="12" fill="#1a252f">Input Berat</text>
+      <line x1="290" y1="246" x2="290" y2="268" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a4)"/>
+      <polygon points="160,270 420,270 410,290 170,290" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+      <text x="290" y="285" text-anchor="middle" font-size="12" fill="#1a252f">"Masukkan Tinggi Badan (cm):"</text>
+      <line x1="290" y1="290" x2="290" y2="312" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a4)"/>
+      <polygon points="175,314 405,314 415,334 165,334" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+      <text x="290" y="329" text-anchor="middle" font-size="12" fill="#1a252f">Input Tinggi</text>
+      <line x1="290" y1="334" x2="290" y2="356" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a4)"/>
+      <rect x="150" y="358" width="280" height="40" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+      <text x="290" y="374" text-anchor="middle" font-size="12" fill="#1a252f">TinggiM = Tinggi / 100</text>
+      <text x="290" y="390" text-anchor="middle" font-size="12" fill="#1a252f">BMI = Berat / (TinggiM × TinggiM)</text>
+      <line x1="290" y1="398" x2="290" y2="420" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a4)"/>
+      <polygon points="160,422 420,422 410,442 170,442" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+      <text x="290" y="437" text-anchor="middle" font-size="12" fill="#1a252f">Output "Nilai BMI: " + BMI</text>
+      <line x1="290" y1="442" x2="290" y2="464" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a4)"/>
+      <!-- BMI < 18.5 -->
+      <polygon points="290,466 390,496 290,526 190,496" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
+      <text x="290" y="491" text-anchor="middle" font-size="12" fill="#1a252f">BMI &lt; 18.5?</text>
+      <line x1="390" y1="496" x2="480" y2="496" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a4)"/>
+      <text x="433" y="488" text-anchor="middle" font-size="10" fill="#27ae60" font-weight="bold">Ya</text>
+      <polygon points="480,480 565,480 557,500 488,500" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+      <text x="522" y="494" text-anchor="middle" font-size="11" fill="#1a252f" font-weight="bold">KURUS</text>
+      <line x1="522" y1="500" x2="522" y2="790" stroke="#2c3e50" stroke-width="1.5"/>
+      <line x1="522" y1="790" x2="370" y2="790" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a4)"/>
+      <!-- BMI < 25 -->
+      <line x1="290" y1="526" x2="290" y2="548" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a4)"/>
+      <text x="276" y="541" font-size="10" fill="#e74c3c" font-weight="bold">Tidak</text>
+      <polygon points="290,550 390,580 290,610 190,580" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
+      <text x="290" y="575" text-anchor="middle" font-size="12" fill="#1a252f">BMI &lt; 25?</text>
+      <line x1="390" y1="580" x2="480" y2="580" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a4)"/>
+      <text x="433" y="572" text-anchor="middle" font-size="10" fill="#27ae60" font-weight="bold">Ya</text>
+      <polygon points="480,564 565,564 557,584 488,584" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+      <text x="522" y="578" text-anchor="middle" font-size="11" fill="#1a252f" font-weight="bold">NORMAL</text>
+      <line x1="522" y1="584" x2="522" y2="790" stroke="#2c3e50" stroke-width="0.8" stroke-dasharray="4,3"/>
+      <!-- BMI < 30 -->
+      <line x1="290" y1="610" x2="290" y2="632" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a4)"/>
+      <text x="276" y="625" font-size="10" fill="#e74c3c" font-weight="bold">Tidak</text>
+      <polygon points="290,634 390,664 290,694 190,664" fill="#ffe6cc" stroke="#d79b00" stroke-width="1.5"/>
+      <text x="290" y="659" text-anchor="middle" font-size="12" fill="#1a252f">BMI &lt; 30?</text>
+      <line x1="390" y1="664" x2="480" y2="664" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a4)"/>
+      <text x="433" y="656" text-anchor="middle" font-size="10" fill="#27ae60" font-weight="bold">Ya</text>
+      <polygon points="480,648 565,648 557,668 488,668" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+      <text x="522" y="662" text-anchor="middle" font-size="11" fill="#1a252f" font-weight="bold">GEMUK</text>
+      <line x1="522" y1="668" x2="522" y2="790" stroke="#2c3e50" stroke-width="0.8" stroke-dasharray="4,3"/>
+      <!-- Obesitas -->
+      <line x1="290" y1="694" x2="290" y2="720" stroke="#2c3e50" stroke-width="1.5" marker-end="url(#a4)"/>
+      <text x="276" y="711" font-size="10" fill="#e74c3c" font-weight="bold">Tidak</text>
+      <polygon points="210,722 370,722 362,742 218,742" fill="#f8cecc" stroke="#b85450" stroke-width="1.5"/>
+      <text x="290" y="736" text-anchor="middle" font-size="12" fill="#1a252f" font-weight="bold">OBESITAS (≥30)</text>
+      <line x1="290" y1="742" x2="290" y2="790" stroke="#2c3e50" stroke-width="1.5"/>
+      <line x1="290" y1="790" x2="368" y2="790" stroke="#2c3e50" stroke-width="1.5"/>
+      <!-- END -->
+      <ellipse cx="370" cy="810" rx="60" ry="22" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+      <text x="370" y="815" text-anchor="middle" font-size="13" fill="#1a252f">Selesai</text>
+    </svg>
+  </div>
+
+  <div class="tag">Kode Python</div>
+
+  <div class="py-block">
+    <div class="py-header">
+      <div class="dots">
+        <div class="py-dot" style="background:#ff5f57"></div>
+        <div class="py-dot" style="background:#febc2e"></div>
+        <div class="py-dot" style="background:#28c840"></div>
+      </div>
+      <span>kalkulator_bmi.py</span>
+    </div>
+    <div class="py-body"># =============================================
+# Kalkulator BMI – Alfin Maulana Yudistira
+# NIM: 250601095 | Kelas B Sore – TI
+# =============================================
+
+def hitung_bmi(berat, tinggi_m):
+    """Menghitung nilai BMI dari berat (kg) dan tinggi (meter)."""
+    bmi = berat / (tinggi_m ** 2)
+    return bmi
+
+def cek_kategori(bmi):
+    """Menentukan kategori berat badan berdasarkan nilai BMI."""
+    if bmi &lt; 18.5:
+        return "Kurus (Underweight)"
+    elif bmi &lt; 25.0:
+        return "Normal (Healthy Weight)"
+    elif bmi &lt; 30.0:
+        return "Gemuk (Overweight)"
+    else:
+        return "Obesitas (Obese)"
+
+# ---- Program Utama ----
+print("=" * 40)
+print("   KALKULATOR BODY MASS INDEX (BMI)")
+print("=" * 40)
+
+berat = int(input("Masukkan Berat Badan (kg) : "))
+tinggi = float(input("Masukkan Tinggi Badan (cm): "))
+
+tinggi_m = tinggi / 100
+bmi = hitung_bmi(berat, tinggi_m)
+kategori = cek_kategori(bmi)
+
+print("-" * 40)
+print(f"Nilai BMI Anda   : {bmi:.2f}")
+print(f"Kategori         : {kategori}")
+print("=" * 40)</div>
+  </div>
+
+  <div class="explain-card">
+    <h4>Tabel Klasifikasi BMI (WHO)</h4>
+    <table>
+      <tr><th>Rentang BMI</th><th>Kategori</th><th>Keterangan</th></tr>
+      <tr><td>&lt; 18.5</td><td style="color:#3498db;font-weight:bold;">Kurus</td><td>Berat badan kurang</td></tr>
+      <tr><td>18.5 – 24.9</td><td style="color:#27ae60;font-weight:bold;">Normal</td><td>Berat badan ideal</td></tr>
+      <tr><td>25.0 – 29.9</td><td style="color:#f39c12;font-weight:bold;">Gemuk</td><td>Kelebihan berat badan</td></tr>
+      <tr><td>≥ 30.0</td><td style="color:#e74c3c;font-weight:bold;">Obesitas</td><td>Risiko tinggi penyakit</td></tr>
+    </table>
+    <p style="font-size:12px;color:#888;margin-top:10px;font-style:italic;">Klasifikasi berdasarkan standar WHO. Untuk populasi Asia, rentang normal disarankan lebih ketat (18.5–22.9).</p>
+  </div>
+</section>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const idx = ['s1','s2','s3','s4'].indexOf(id);
+  document.querySelectorAll('.nav-btn')[idx].classList.add('active');
+  window.scrollTo({ top: document.getElementById('main-nav').offsetTop, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
