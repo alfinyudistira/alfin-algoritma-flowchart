@@ -654,53 +654,9 @@
 
   <div class="tag">Kode Python</div>
 
-  <div class="py-block">
-    <div class="py-header">
-      <div class="dots">
-        <div class="py-dot" style="background:#ff5f57"></div>
-        <div class="py-dot" style="background:#febc2e"></div>
-        <div class="py-dot" style="background:#28c840"></div>
-      </div>
-      <span>kalkulator_bmi.py</span>
-    </div>
-    <div class="py-body"># =============================================
-# Kalkulator BMI – Alfin Maulana Yudistira
-# NIM: 250601095 | Kelas B Sore – TI
-# =============================================
-
-def hitung_bmi(berat, tinggi_m):
-    """Menghitung nilai BMI dari berat (kg) dan tinggi (meter)."""
-    bmi = berat / (tinggi_m ** 2)
-    return bmi
-
-def cek_kategori(bmi):
-    """Menentukan kategori berat badan berdasarkan nilai BMI."""
-    if bmi &lt; 18.5:
-        return "Kurus (Underweight)"
-    elif bmi &lt; 25.0:
-        return "Normal (Healthy Weight)"
-    elif bmi &lt; 30.0:
-        return "Gemuk (Overweight)"
-    else:
-        return "Obesitas (Obese)"
-
-# ---- Program Utama ----
-print("=" * 40)
-print("   KALKULATOR BODY MASS INDEX (BMI)")
-print("=" * 40)
-
-berat = int(input("Masukkan Berat Badan (kg) : "))
-tinggi = float(input("Masukkan Tinggi Badan (cm): "))
-
-tinggi_m = tinggi / 100
-bmi = hitung_bmi(berat, tinggi_m)
-kategori = cek_kategori(bmi)
-
-print("-" * 40)
-print(f"Nilai BMI Anda   : {bmi:.2f}")
-print(f"Kategori         : {kategori}")
-print("=" * 40)</div>
-  </div>
+<div style="text-align: center; margin-top: 15px;">
+    <img src="Pyhton.png" alt="Bukti Output Python" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+</div>
 
   <div class="explain-card">
     <h4>Tabel Klasifikasi BMI (WHO)</h4>
